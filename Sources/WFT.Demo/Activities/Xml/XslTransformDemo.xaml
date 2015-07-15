@@ -1,0 +1,130 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="WFT.Demo.Activities.Xml.XslTransformDemo" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WFT.Demo.Activities.Xml.XslTransformDemo_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:wax="clr-namespace:WFT.Activities.Xml;assembly=WFT"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>WFT</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>WFT.Demo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="xml" />
+      <Variable x:TypeArguments="x:String" Name="xsl" />
+      <Variable x:TypeArguments="x:String" Name="transformation" />
+    </Sequence.Variables>
+    <Assign DisplayName="AssignXml" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xml</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String" xml:space="preserve">&lt;hello-world&gt;   &lt;greeter&gt;An XSLT Programmer&lt;/greeter&gt;   &lt;greeting&gt;Hello, World!&lt;/greeting&gt;&lt;/hello-world&gt;</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="AssignXsl" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xsl</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">@"&lt;?xml version='1.0'?&gt;
+&lt;xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' version='1.0'&gt;
+  &lt;xsl:template match='/hello-world'&gt;
+    &lt;HTML&gt;
+      &lt;HEAD&gt;
+        &lt;TITLE&gt;&lt;/TITLE&gt;
+      &lt;/HEAD&gt;
+      &lt;BODY&gt;
+        &lt;H1&gt;
+          &lt;xsl:value-of select='greeting'/&gt;
+        &lt;/H1&gt;
+        &lt;xsl:apply-templates select='greeter'/&gt;
+      &lt;/BODY&gt;
+    &lt;/HTML&gt;
+  &lt;/xsl:template&gt;
+  &lt;xsl:template match='greeter'&gt;
+    &lt;DIV&gt;from &lt;I&gt;&lt;xsl:value-of select='.'/&gt;&lt;/I&gt;&lt;/DIV&gt;
+  &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;"</mca:CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <wax:XslTransform sap2010:WorkflowViewState.IdRef="XslTransform_1">
+      <wax:XslTransform.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">transformation</mca:CSharpReference>
+        </OutArgument>
+      </wax:XslTransform.Result>
+      <wax:XslTransform.Xml>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+        </InArgument>
+      </wax:XslTransform.Xml>
+      <wax:XslTransform.Xsl>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xsl</mca:CSharpValue>
+        </InArgument>
+      </wax:XslTransform.Xsl>
+    </wax:XslTransform>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1">
+      <InArgument x:TypeArguments="x:String">
+        <mca:CSharpValue x:TypeArguments="x:String">transformation.ToString()</mca:CSharpValue>
+      </InArgument>
+    </WriteLine>
+    <sads:DebugSymbol.Symbol>d0pFOlxDb2RlcGxleFx3ZnRcTWFpblxTb3VyY2VzXFdGVC5EZW1vXEFjdGl2aXRpZXNcWG1sXFhzbFRyYW5zZm9ybURlbW8ueGFtbAwsA3EOAgEBMgU7DgIBHTwFWQ4CARRaBWoYAgEHawVvEQIBAjULNVQCAR5EC1YrAgEZPws/VAIBFWcLZ0wCARBiC2JMAgEMXQtdXwIBCG0JbWACAQM=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="XslTransform_1" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="264,452">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WFT.Demo.Activities.Xml.XslTransformDemo_1" sap:VirtualizedContainerService.HintSize="304,532" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

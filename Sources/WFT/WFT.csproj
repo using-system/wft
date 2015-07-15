@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0C239FF4-ABC5-4145-8114-9F561B9AAA17}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WFT</RootNamespace>
+    <AssemblyName>WFT</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Core.Presentation" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.DurableInstancing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ProjectInfo.cs">
+      <Link>Properties\ProjectInfo.cs</Link>
+    </Compile>
+    <Compile Include="Activities\CreateBookmark.cs" />
+    <Compile Include="Activities\CrontabDelay.cs" />
+    <Compile Include="Activities\Designers\DesignerIconAttribute.cs" />
+    <Compile Include="Activities\Designers\ForDesigner.xaml.cs">
+      <DependentUpon>ForDesigner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\Designers\ForOperatorConvertor.cs" />
+    <Compile Include="Activities\Designers\IconActivityDesigner.xaml.cs">
+      <DependentUpon>IconActivityDesigner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\Designers\SendMailDesigner.xaml.cs">
+      <DependentUpon>SendMailDesigner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Activities\EvaluateExpression.cs" />
+    <Compile Include="Activities\EvaluateExpressionWithResult.cs" />
+    <Compile Include="Activities\BaseForActivity.cs" />
+    <Compile Include="Activities\For.cs" />
+    <Compile Include="Activities\GetWorkflowID.cs" />
+    <Compile Include="Activities\EvaluateLambda.cs" />
+    <Compile Include="Activities\EvaluateLambdaWithResult.cs" />
+    <Compile Include="Activities\Net\SendMail.cs" />
+    <Compile Include="Activities\ParallelFor.cs" />
+    <Compile Include="Activities\Xml\AddXmlAttributes.cs" />
+    <Compile Include="Activities\Xml\CreateXmlChild.cs" />
+    <Compile Include="Activities\Xml\FormatXml.cs" />
+    <Compile Include="Activities\Xml\InsertXmlNodes.cs" />
+    <Compile Include="Activities\Xml\ReadXmlValue.cs" />
+    <Compile Include="Activities\Xml\ReadXmlValues.cs" />
+    <Compile Include="Activities\Xml\AddXmlAttribute.cs" />
+    <Compile Include="Activities\Xml\BaseXmlTransformation.cs" />
+    <Compile Include="Activities\Xml\CreateXmlChilds.cs" />
+    <Compile Include="Activities\Xml\InsertXmlNode.cs" />
+    <Compile Include="Activities\Xml\RemoveXmlAttribute.cs" />
+    <Compile Include="Activities\Xml\RemoveXmlChildrens.cs" />
+    <Compile Include="Activities\Xml\RemoveXmlNode.cs" />
+    <Compile Include="Activities\Xml\ReplaceXmlNode.cs" />
+    <Compile Include="Activities\Xml\SetXmlAttributeValue.cs" />
+    <Compile Include="Activities\Xml\SetXmlAttributeValues.cs" />
+    <Compile Include="Activities\Xml\SetXmlNodeValue.cs" />
+    <Compile Include="Activities\Xml\SetXmlNodeValues.cs" />
+    <Compile Include="Activities\Xml\XslTransform.cs" />
+    <Compile Include="Core\AsyncResult.cs" />
+    <Compile Include="Core\CompletedAsyncResult.cs" />
+    <Compile Include="Core\DurableInstancing\MemoryInstanceStore.cs" />
+    <Compile Include="Core\DurableInstancing\MemoryInstanceStoreBehavior.cs" />
+    <Compile Include="Core\DurableInstancing\SerializationProvider.cs" />
+    <Compile Include="Core\DurableInstancing\WorkflowNamespace.cs" />
+    <Compile Include="Core\DurableInstancing\WorkflowServiceNamespace.cs" />
+    <Compile Include="Core\DurableInstancing\XmlInstanceStore.cs" />
+    <Compile Include="Core\DurableInstancing\XmlInstanceStoreBehavior.cs" />
+    <Compile Include="EntryPoint.cs" />
+    <Compile Include="Extensions\ActivityContextExtensions.cs" />
+    <Compile Include="Extensions\ActivityExtensions.cs" />
+    <Compile Include="Extensions\ExpressionExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="Helpers\Scheduling\CrontabException.cs" />
+    <Compile Include="Helpers\Scheduling\CrontabField.cs" />
+    <Compile Include="Helpers\Scheduling\CrontabFieldImpl.cs" />
+    <Compile Include="Helpers\Scheduling\CrontabFieldKind.cs" />
+    <Compile Include="Helpers\Scheduling\CrontabSchedule.cs" />
+    <Compile Include="Helpers\Scheduling\ErrorHandling.cs" />
+    <Compile Include="Helpers\Scheduling\ICrontabField.cs" />
+    <Compile Include="Helpers\Scheduling\ValueOrError.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CronDelayDesigner.bmp" />
+    <EmbeddedResource Include="Resources\CronDelayToolbox.bmp" />
+    <Resource Include="Resources\GetWorkflowIDDesigner.bmp" />
+    <EmbeddedResource Include="Resources\GetWorkflowIDToolbox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\XmlDesigner.bmp" />
+    <EmbeddedResource Include="Resources\XmlToolbox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Activities\Designers\ForDesigner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Activities\Designers\IconActivityDesigner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Activities\Designers\SendMailDesigner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BookmarkDesigner.bmp" />
+    <EmbeddedResource Include="Resources\BookmarkToolbox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CodeDesigner.bmp" />
+    <EmbeddedResource Include="Resources\CodeToolbox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MailDesigner.bmp" />
+    <EmbeddedResource Include="Resources\MailToolbox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ForDesigner.bmp" />
+    <EmbeddedResource Include="Resources\ForToolbox.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

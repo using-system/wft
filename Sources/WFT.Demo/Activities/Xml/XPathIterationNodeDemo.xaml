@@ -1,0 +1,146 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="WFT.Demo.Activities.Xml.XPathIterationNodeDemo" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WFT.Demo.Activities.Xml.XPathIterationNodeDemo_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:wax="clr-namespace:WFT.Activities.Xml;assembly=WFT"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>WFT</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>WFT.Demo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="xml" />
+      <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="xmlValues" />
+    </Sequence.Variables>
+    <Assign sap2010:Annotation.AnnotationText="Assign &quot;&lt;users&gt;&#xD;&#xA;  &lt;user&gt;&#xD;&#xA;    &lt;Name&gt;Name1&lt;/Name&gt;&#xD;&#xA;    &lt;Age&gt;25&lt;/Age&gt;&#xD;&#xA;  &lt;/user&gt;&#xD;&#xA;  &lt;user&gt;&#xD;&#xA;    &lt;Name&gt;Name2&lt;/Name&gt;&#xD;&#xA;  &lt;/user&gt;&#xD;&#xA;  &lt;user&gt;&#xD;&#xA;    &lt;Name&gt;Name3&lt;/Name&gt;&#xD;&#xA;    &lt;Age&gt;35&lt;/Age&gt;&#xD;&#xA;  &lt;/user&gt;&#xD;&#xA;&lt;/users&gt;&quot; to the xml variable" DisplayName="AssignXml" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xml</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">@"&lt;users&gt;
+                            &lt;user&gt;
+                                &lt;Name&gt;Name1&lt;/Name&gt;
+                                &lt;Age&gt;25&lt;/Age&gt;
+                            &lt;/user&gt;
+                            &lt;user&gt;
+                                &lt;Name&gt;Name2&lt;/Name&gt;
+                            &lt;/user&gt;
+                            &lt;user&gt;
+                                &lt;Name&gt;Name3&lt;/Name&gt;
+                                &lt;Age&gt;35&lt;/Age&gt;
+                            &lt;/user&gt;
+                           &lt;/users&gt;"</mca:CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <wax:ReadXmlValues sap2010:Annotation.AnnotationText="Iterate all &quot;/users/user&quot; nodes and get the &quot;Age&quot; element value" sap2010:WorkflowViewState.IdRef="ReadXmlValues_1" XPath="/user/Age/text()" XPathIterationNode="/users/user">
+      <wax:ReadXmlValues.Result>
+        <OutArgument x:TypeArguments="scg:IEnumerable(x:String)">
+          <mca:CSharpReference x:TypeArguments="scg:IEnumerable(x:String)">xmlValues</mca:CSharpReference>
+        </OutArgument>
+      </wax:ReadXmlValues.Result>
+      <wax:ReadXmlValues.Xml>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+        </InArgument>
+      </wax:ReadXmlValues.Xml>
+    </wax:ReadXmlValues>
+    <ForEach x:TypeArguments="x:String" DisplayName="ForEach&lt;String&gt;" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
+      <ForEach.Values>
+        <InArgument x:TypeArguments="scg:IEnumerable(x:String)">
+          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(x:String)">xmlValues</mca:CSharpValue>
+        </InArgument>
+      </ForEach.Values>
+      <ActivityAction x:TypeArguments="x:String">
+        <ActivityAction.Argument>
+          <DelegateInArgument x:TypeArguments="x:String" Name="age" />
+        </ActivityAction.Argument>
+        <If sap2010:WorkflowViewState.IdRef="If_1">
+          <If.Condition>
+            <InArgument x:TypeArguments="x:Boolean">
+              <mca:CSharpValue x:TypeArguments="x:Boolean">age == null</mca:CSharpValue>
+            </InArgument>
+          </If.Condition>
+          <If.Then>
+            <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="The user has no age defined" />
+          </If.Then>
+          <If.Else>
+            <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_2">
+              <InArgument x:TypeArguments="x:String">
+                <mca:CSharpValue x:TypeArguments="x:String">age</mca:CSharpValue>
+              </InArgument>
+            </WriteLine>
+          </If.Else>
+        </If>
+      </ActivityAction>
+    </ForEach>
+    <sads:DebugSymbol.Symbol>d1BFOlxDb2RlcGxleFx3ZnRcTWFpblxTb3VyY2VzXFdGVC5EZW1vXEFjdGl2aXRpZXNcWG1sXFhQYXRoSXRlcmF0aW9uTm9kZURlbW8ueGFtbBEsA3MOAgEBMQVIDgIBG0kFVBkCARJVBXEPAgECOQtFPQIBHzQLNFQCARxJyAFJ2gECARpJ7gFJ+wECARlRC1FMAgEWTAtMawIBE1gLWGMCAQ9fCW8OAgEDYg9iWQIBBGYNZmsCAQ1pDW0ZAgEIZktmaAIBDmsRa1ICAQk=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="494,265">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadXmlValues_1" sap:VirtualizedContainerService.HintSize="494,75">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="211,62" />
+      <sap2010:ViewStateData Id="WriteLine_2" sap:VirtualizedContainerService.HintSize="211,62" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,212" />
+      <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="494,362" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="516,906">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WFT.Demo.Activities.Xml.XPathIterationNodeDemo_1" sap:VirtualizedContainerService.HintSize="556,986" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

@@ -1,0 +1,103 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="WFT.Demo.Activities.Net.SendMailDemo" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WFT.Demo.Activities.Net.SendMailDemo_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:snm="clr-namespace:System.Net.Mail;assembly=System"
+ xmlns:wan="clr-namespace:WFT.Activities.Net;assembly=WFT"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Net.Mail</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>WFT</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>WFT.Demo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="snm:MailAddressCollection" Name="toAddresses">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="snm:MailAddressCollection">new System.Net.Mail.MailAddressCollection()</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="snm:MailAddress" Name="fromAddress">
+        <Variable.Default>
+          <mca:CSharpValue x:TypeArguments="snm:MailAddress">new System.Net.Mail.MailAddress("robert.patison@contoso.com")</mca:CSharpValue>
+        </Variable.Default>
+      </Variable>
+    </Sequence.Variables>
+    <AddToCollection x:TypeArguments="snm:MailAddress" sap2010:Annotation.AnnotationText="Add &quot;someone@contoso.com&quot; mail to the collection" DisplayName="AddToAddresses" sap2010:WorkflowViewState.IdRef="AddToCollection`1_1">
+      <AddToCollection.Item>
+        <InArgument x:TypeArguments="snm:MailAddress">
+          <mca:CSharpValue x:TypeArguments="snm:MailAddress">new System.Net.Mail.MailAddress("someone@contoso.com")</mca:CSharpValue>
+        </InArgument>
+      </AddToCollection.Item>
+      <InArgument x:TypeArguments="scg:ICollection(snm:MailAddress)">
+        <mca:CSharpValue x:TypeArguments="scg:ICollection(snm:MailAddress)">toAddresses</mca:CSharpValue>
+      </InArgument>
+    </AddToCollection>
+    <wan:SendMail Attachments="{x:Null}" Bcc="{x:Null}" CC="{x:Null}" EnableSsl="{x:Null}" Password="{x:Null}" Port="{x:Null}" UserName="{x:Null}" Body="Hello. This is a test email." Host="localhost" sap2010:WorkflowViewState.IdRef="SendMail_2" Subject="Test">
+      <wan:SendMail.From>
+        <InArgument x:TypeArguments="snm:MailAddress">
+          <mca:CSharpValue x:TypeArguments="snm:MailAddress">fromAddress</mca:CSharpValue>
+        </InArgument>
+      </wan:SendMail.From>
+      <wan:SendMail.To>
+        <InArgument x:TypeArguments="snm:MailAddressCollection">
+          <mca:CSharpValue x:TypeArguments="snm:MailAddressCollection">toAddresses</mca:CSharpValue>
+        </InArgument>
+      </wan:SendMail.To>
+    </wan:SendMail>
+    <sads:DebugSymbol.Symbol>d0ZFOlxDb2RlcGxleFx3ZnRcTWFpblxTb3VyY2VzXFdGVC5EZW1vXEFjdGl2aXRpZXNcTmV0XFNlbmRNYWlsRGVtby54YW1sDC4DUg4CAQEyCzKFAQIBBTcLN40BAgECOwVEFwIBEkUFUBQCAQhCCUJqAgEWPgs+hgECARNNC01lAgEPRZkBRbcBAgEORf4BRYQCAgENSAtIWwIBCkW9AUXIAQIBCQ==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="AddToCollection`1_1" sap:VirtualizedContainerService.HintSize="292,75">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SendMail_2" sap:VirtualizedContainerService.HintSize="292,144" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="314,383">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WFT.Demo.Activities.Net.SendMailDemo_1" sap:VirtualizedContainerService.HintSize="354,463" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

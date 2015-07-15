@@ -1,0 +1,357 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="WFT.Demo.Activities.Xml.NodeOperationsDemo" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap2010:WorkflowViewState.IdRef="WFT.Demo.Activities.Xml.NodeOperationsDemo_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:wax="clr-namespace:WFT.Activities.Xml;assembly=WFT"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>WFT</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>WFT.Demo</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="xml" />
+      <Variable x:TypeArguments="x:String" Name="template" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="xmlValues" />
+      <Variable x:TypeArguments="x:String" Name="xmlValue" />
+    </Sequence.Variables>
+    <Assign sap2010:Annotation.AnnotationText="Assign xml variable to &quot;&lt;assets&gt;&lt;/assets&gt;&quot;" DisplayName="AssignXml" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xml</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">&lt;assets&gt;&lt;/assets&gt;</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap2010:Annotation.AnnotationText="Assign template variable to &quot;&lt;attributes&gt;&#xD;&#xA;  &lt;asset&gt;&#xD;&#xA;    &lt;id&gt;1&lt;/id&gt;&#xD;&#xA;  &lt;/asset&gt;&#xD;&#xA;  &lt;asset&gt;&#xD;&#xA;    &lt;id&gt;2&lt;/id&gt;&#xD;&#xA;  &lt;/asset&gt;&#xD;&#xA;  &lt;asset&gt;&#xD;&#xA;    &lt;id&gt;3&lt;/id&gt;&#xD;&#xA;  &lt;/asset&gt;&#xD;&#xA;  &lt;name&gt;1&lt;/name&gt;&#xD;&#xA;  &lt;name&gt;2&lt;/name&gt;&#xD;&#xA;  &lt;name&gt;3&lt;/name&gt;&#xD;&#xA;&lt;/attributes&gt;&quot;" DisplayName="AssignTemplate" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">template</mca:CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String" xml:space="preserve">@"&lt;attributes&gt;
+                                    &lt;asset&gt;
+                                        &lt;id&gt;1&lt;/id&gt;
+                                    &lt;/asset&gt;
+                                    &lt;asset&gt;
+                                        &lt;id&gt;2&lt;/id&gt;
+                                    &lt;/asset&gt;
+                                    &lt;asset&gt;
+                                        &lt;id&gt;3&lt;/id&gt;
+                                    &lt;/asset&gt;
+                                    &lt;name&gt;1&lt;/name&gt;
+                                    &lt;name&gt;2&lt;/name&gt;
+                                    &lt;name&gt;3&lt;/name&gt;
+                                   &lt;/attributes&gt;"</mca:CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <wax:ReadXmlValue sap2010:Annotation.AnnotationText="Read node from the template variable with the XPath expression &quot;/attributes&quot;" sap2010:WorkflowViewState.IdRef="ReadXmlValue_1" XPath="/attributes">
+      <wax:ReadXmlValue.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xmlValue</mca:CSharpReference>
+        </OutArgument>
+      </wax:ReadXmlValue.Result>
+      <wax:ReadXmlValue.Xml>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">template</mca:CSharpValue>
+        </InArgument>
+      </wax:ReadXmlValue.Xml>
+    </wax:ReadXmlValue>
+    <wax:SetXmlNodeValue sap2010:Annotation.AnnotationText="Set the node value to the root node &quot;/assets&quot; of the variable xml" sap2010:WorkflowViewState.IdRef="SetXmlNodeValue_1" XPath="/assets">
+      <wax:SetXmlNodeValue.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xml</mca:CSharpReference>
+        </OutArgument>
+      </wax:SetXmlNodeValue.Result>
+      <wax:SetXmlNodeValue.Value>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xmlValue</mca:CSharpValue>
+        </InArgument>
+      </wax:SetXmlNodeValue.Value>
+      <wax:SetXmlNodeValue.XmlSource>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+        </InArgument>
+      </wax:SetXmlNodeValue.XmlSource>
+    </wax:SetXmlNodeValue>
+    <wax:ReadXmlValues x:TypeArguments="scg:List(x:String)" XPathIterationNode="{x:Null}" sap2010:Annotation.AnnotationText="Read all &quot;/assets/attributes/asset&quot; nodes from the xml variable" DisplayName="ReadXmlValues" sap2010:WorkflowViewState.IdRef="ReadXmlValues`1_1" XPath="/assets/attributes/asset">
+      <wax:ReadXmlValues.Result>
+        <OutArgument x:TypeArguments="scg:List(x:String)">
+          <mca:CSharpReference x:TypeArguments="scg:List(x:String)">xmlValues</mca:CSharpReference>
+        </OutArgument>
+      </wax:ReadXmlValues.Result>
+      <wax:ReadXmlValues.Xml>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+        </InArgument>
+      </wax:ReadXmlValues.Xml>
+    </wax:ReadXmlValues>
+    <wax:InsertXmlNodes sap2010:Annotation.AnnotationText="Insert all nodes node before the &quot;/assets/attributes&quot; node from the xml variable" sap2010:WorkflowViewState.IdRef="InsertXmlNodes_1" InsertMode="Before" XPath="/assets/attributes">
+      <wax:InsertXmlNodes.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xml</mca:CSharpReference>
+        </OutArgument>
+      </wax:InsertXmlNodes.Result>
+      <wax:InsertXmlNodes.XmlNodes>
+        <InArgument x:TypeArguments="scg:List(x:String)">
+          <mca:CSharpValue x:TypeArguments="scg:List(x:String)">xmlValues</mca:CSharpValue>
+        </InArgument>
+      </wax:InsertXmlNodes.XmlNodes>
+      <wax:InsertXmlNodes.XmlSource>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+        </InArgument>
+      </wax:InsertXmlNodes.XmlSource>
+    </wax:InsertXmlNodes>
+    <wax:RemoveXmlNode sap2010:Annotation.AnnotationText="Remove &quot;/assets/attributes/&quot; node from xml variable" sap2010:WorkflowViewState.IdRef="RemoveXmlNode_1" XPath="/assets/attributes">
+      <wax:RemoveXmlNode.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xml</mca:CSharpReference>
+        </OutArgument>
+      </wax:RemoveXmlNode.Result>
+      <wax:RemoveXmlNode.XmlSource>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+        </InArgument>
+      </wax:RemoveXmlNode.XmlSource>
+    </wax:RemoveXmlNode>
+    <wax:InsertXmlNode sap2010:Annotation.AnnotationText="Insert xml node &quot;&lt;asset&gt; &lt;id&gt;22&lt;/id&gt;&lt;/asset&gt;&quot; after the second &quot;asset&quot; node from the xml variable" sap2010:WorkflowViewState.IdRef="InsertXmlNode_1" InsertMode="After" XPath="/assets/asset[2]" XmlNode="&lt;asset&gt; &lt;id&gt;22&lt;/id&gt;&lt;/asset&gt;">
+      <wax:InsertXmlNode.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xml</mca:CSharpReference>
+        </OutArgument>
+      </wax:InsertXmlNode.Result>
+      <wax:InsertXmlNode.XmlSource>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+        </InArgument>
+      </wax:InsertXmlNode.XmlSource>
+    </wax:InsertXmlNode>
+    <wax:InsertXmlNode sap2010:Annotation.AnnotationText="Insert xml node &quot;&lt;name&gt;&lt;/name&gt;&quot; after all &quot;id&quot; element from the xml variable" sap2010:WorkflowViewState.IdRef="InsertXmlNode_2" InsertMode="After" XPath="/assets/asset/id" XmlNode="&lt;name&gt;&lt;/name&gt;">
+      <wax:InsertXmlNode.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xml</mca:CSharpReference>
+        </OutArgument>
+      </wax:InsertXmlNode.Result>
+      <wax:InsertXmlNode.XmlSource>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+        </InArgument>
+      </wax:InsertXmlNode.XmlSource>
+    </wax:InsertXmlNode>
+    <wax:InsertXmlNode sap2010:Annotation.AnnotationText="Insert xml node &quot;&lt;internalid&gt;&lt;/internalid&gt;&quot; before all &quot;id&quot; element from the xml variable" sap2010:WorkflowViewState.IdRef="InsertXmlNode_3" InsertMode="Before" XPath="/assets/asset/id" XmlNode="&lt;internalid&gt;&lt;/internalid&gt;">
+      <wax:InsertXmlNode.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xml</mca:CSharpReference>
+        </OutArgument>
+      </wax:InsertXmlNode.Result>
+      <wax:InsertXmlNode.XmlSource>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+        </InArgument>
+      </wax:InsertXmlNode.XmlSource>
+    </wax:InsertXmlNode>
+    <wax:ReadXmlValues x:TypeArguments="scg:List(x:String)" XPathIterationNode="{x:Null}" sap2010:Annotation.AnnotationText="Read all &quot;name&quot; element values from the template variable" DisplayName="ReadXmlValues" sap2010:WorkflowViewState.IdRef="ReadXmlValues`1_2" XPath="/attributes/name/text()">
+      <wax:ReadXmlValues.Result>
+        <OutArgument x:TypeArguments="scg:List(x:String)">
+          <mca:CSharpReference x:TypeArguments="scg:List(x:String)">xmlValues</mca:CSharpReference>
+        </OutArgument>
+      </wax:ReadXmlValues.Result>
+      <wax:ReadXmlValues.Xml>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">template</mca:CSharpValue>
+        </InArgument>
+      </wax:ReadXmlValues.Xml>
+    </wax:ReadXmlValues>
+    <wax:SetXmlNodeValues sap2010:Annotation.AnnotationText="Set the values to the &quot;name&quot; element from the xml variable" sap2010:WorkflowViewState.IdRef="SetXmlNodeValues_1" XPath="/assets/asset/name">
+      <wax:SetXmlNodeValues.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xml</mca:CSharpReference>
+        </OutArgument>
+      </wax:SetXmlNodeValues.Result>
+      <wax:SetXmlNodeValues.Values>
+        <InArgument x:TypeArguments="scg:List(x:String)">
+          <mca:CSharpValue x:TypeArguments="scg:List(x:String)">xmlValues</mca:CSharpValue>
+        </InArgument>
+      </wax:SetXmlNodeValues.Values>
+      <wax:SetXmlNodeValues.XmlSource>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+        </InArgument>
+      </wax:SetXmlNodeValues.XmlSource>
+    </wax:SetXmlNodeValues>
+    <wax:ReplaceXmlNode sap2010:Annotation.AnnotationText="Replace the last &quot;asset&quot; node from the xml variable to &quot;&lt;asset&gt;&lt;empty&gt;&lt;/empty&gt;&lt;/asset&gt;&quot;" sap2010:WorkflowViewState.IdRef="ReplaceXmlNode_1" NewXmlNode="&lt;asset&gt;&lt;empty&gt;&lt;/empty&gt;&lt;/asset&gt;" XPath="/assets/asset[4]">
+      <wax:ReplaceXmlNode.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xml</mca:CSharpReference>
+        </OutArgument>
+      </wax:ReplaceXmlNode.Result>
+      <wax:ReplaceXmlNode.XmlSource>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+        </InArgument>
+      </wax:ReplaceXmlNode.XmlSource>
+    </wax:ReplaceXmlNode>
+    <wax:FormatXml sap2010:WorkflowViewState.IdRef="FormatXml_1" LoadOptions="None">
+      <wax:FormatXml.Result>
+        <OutArgument x:TypeArguments="x:String">
+          <mca:CSharpReference x:TypeArguments="x:String">xml</mca:CSharpReference>
+        </OutArgument>
+      </wax:FormatXml.Result>
+      <wax:FormatXml.XmlSource>
+        <InArgument x:TypeArguments="x:String">
+          <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+        </InArgument>
+      </wax:FormatXml.XmlSource>
+    </wax:FormatXml>
+    <WriteLine sap2010:WorkflowViewState.IdRef="WriteLine_1">
+      <InArgument x:TypeArguments="x:String">
+        <mca:CSharpValue x:TypeArguments="x:String">xml</mca:CSharpValue>
+      </InArgument>
+    </WriteLine>
+    <sads:DebugSymbol.Symbol>d0xFOlxDb2RlcGxleFx3ZnRcTWFpblxTb3VyY2VzXFdGVC5EZW1vXEFjdGl2aXRpZXNcWG1sXE5vZGVPcGVyYXRpb25zRGVtby54YW1sPywD+wEOAgEBMwU8DgMBtQE9BVUOAwGqAVYFYRgDAZ4BYgVyGwMBjQFzBX4ZAwGBAX8FjwEaAgFwkAEFmwEZAgFknAEFpwEZAgFXqAEFswEZAgFKtAEFvwEZAgE9wAEFywEZAgExzAEF3AEcAgEg3QEF6AEaAgET6QEF9AEVAgEI9QEF+QERAgECOjA6TQMBuwE2CzZUAwG2AUULUkoDAbABQAtAWQMBqwFWyQFW1gEDAakBXgteUQMBpAFZC1lZAwGfAWoLalEDAZkBYsQBYs0BAwGYAWULZVQDAZMBbwtvTAMBjgFznwJzuQIDAYwBewt7TAMBhwF2C3ZkAwGCAX/lAX/5AQMBgAGCAQuCAVQCAXuMAQuMAUwCAXaHAQuHAVwCAXGQAbIBkAHGAQIBb5MBC5MBVAIBapgBC5gBTAIBZZwBlQKcAacCAgFjnwELnwFUAgFepAELpAFMAgFZnAGwApwB5QICAVioAfQBqAGGAgIBVqsBC6sBVAIBUbABC7ABTAIBTKgBjwKoAaoCAgFLtAGCArQBlAICAUm3AQu3AVQCAUS8AQu8AUwCAT+0AZ0CtAHEAgIBPsABmQLAAbICAgE8yAELyAFRAgE3wwELwwFkAgEyzAG/AcwB0wECATDUAQvUAVwCASvPAQvPAVQCASbZAQvZAUwCASHdAb4C3QHQAgIBH90B/wHdAbcCAgEe4AEL4AFUAgEZ5QEL5QFMAgEU7AEL7AFUAgEO8QEL8QFMAgEJ9wEJ9wFKAgED</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,100">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,295">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadXmlValue_1" sap:VirtualizedContainerService.HintSize="242,75">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SetXmlNodeValue_1" sap:VirtualizedContainerService.HintSize="242,75">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadXmlValues`1_1" sap:VirtualizedContainerService.HintSize="242,75">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InsertXmlNodes_1" sap:VirtualizedContainerService.HintSize="242,75">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RemoveXmlNode_1" sap:VirtualizedContainerService.HintSize="242,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InsertXmlNode_1" sap:VirtualizedContainerService.HintSize="242,90">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InsertXmlNode_2" sap:VirtualizedContainerService.HintSize="242,75">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="InsertXmlNode_3" sap:VirtualizedContainerService.HintSize="242,90">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReadXmlValues`1_2" sap:VirtualizedContainerService.HintSize="242,75">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SetXmlNodeValues_1" sap:VirtualizedContainerService.HintSize="242,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ReplaceXmlNode_1" sap:VirtualizedContainerService.HintSize="242,90">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FormatXml_1" sap:VirtualizedContainerService.HintSize="242,22" />
+      <sap2010:ViewStateData Id="WriteLine_1" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="264,2003">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WFT.Demo.Activities.Xml.NodeOperationsDemo_1" sap:VirtualizedContainerService.HintSize="304,2083" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
