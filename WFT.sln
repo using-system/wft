@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFT", "Sources\WFT\WFT.csproj", "{0C239FF4-ABC5-4145-8114-9F561B9AAA17}"
 EndProject
@@ -10,26 +10,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AD53F5FE-14E8-4265-A48F-A2F861A38659}"
 	ProjectSection(SolutionItems) = preProject
 		ProjectInfo.cs = ProjectInfo.cs
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFT.Demo", "Sources\WFT.Demo\WFT.Demo.csproj", "{8B3C3DD5-1632-433A-8A47-DE86D6D8019C}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs21
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Sources\\WFT\\WFT.csproj
-		SccProjectName1 = Sources/WFT
-		SccLocalPath1 = Sources\\WFT
-		SccProjectUniqueName2 = Sources\\WFT.Tests\\WFT.Tests.csproj
-		SccProjectName2 = Sources/WFT.Tests
-		SccLocalPath2 = Sources\\WFT.Tests
-		SccProjectUniqueName3 = Sources\\WFT.Demo\\WFT.Demo.csproj
-		SccProjectName3 = Sources/WFT.Demo
-		SccLocalPath3 = Sources\\WFT.Demo
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
