@@ -108,10 +108,3 @@ Workflow Foundation Toolbox
 </ul>
 </li>
 </ul>
-<p><font size="2"><strong><span style="font-size: 10pt;">RoadMap&nbsp;:</span></strong></font></p>
-<ul>
-<li><strong>0.3.x</strong> : Linq To Objects activities</li>
-<li><strong>0.4.x :</strong>&nbsp;WCF, Rest/Xml, Rest/Json Features</li>
-<li><strong>0.5.x :</strong>&nbsp;Twitter activities</li>
-<li><strong>0.6.x :&nbsp;</strong>Network activities (Copy, Move, Create, Get, WatchFolder...) for protocol Samba, NFS, FTP, FTPS, SFTP, HTTP etc...</li>
-</ul>
